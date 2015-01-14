@@ -1,4 +1,4 @@
-package me.qingshan.dbrw;
+package org.qingshan.dbrw;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
