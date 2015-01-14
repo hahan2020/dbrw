@@ -7,12 +7,12 @@ import java.sql.Timestamp;
  * @author 345480567@qq.com
  * 
  */
-public class Field implements Serializable {
+public class FieldData implements Serializable {
 
 	private static final long serialVersionUID = -8182666564876333748L;
 	private FieldMeta fieldMeta = null;
 	private Object dbObj = null;
-	public Field(FieldMeta fieldMeta, Object dbObj) {
+	public FieldData(FieldMeta fieldMeta, Object dbObj) {
 		this.fieldMeta = fieldMeta;
 		this.dbObj = dbObj;
 	}

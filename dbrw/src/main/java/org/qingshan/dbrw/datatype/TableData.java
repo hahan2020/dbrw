@@ -44,9 +44,9 @@ public class TableData implements Serializable{
 	//取得某列
 	public ColumnData getColumn(Integer columnIndex) {
 		FieldMeta fieldMeta = tableMeta.getFieldMeta(columnIndex);
-		List<Field> fieldList = new ArrayList<Field>();
+		List<FieldData> fieldList = new ArrayList<FieldData>();
 		for(RowData rowData : rowDataList) {
-			Field field = rowData.getField(columnIndex);
+			FieldData field = rowData.getField(columnIndex);
 			fieldList.add(field);
 		}
 		ColumnData columnData = new ColumnData(fieldMeta, fieldList);
@@ -59,9 +59,9 @@ public class TableData implements Serializable{
 	}
 	
 	//取得某行、某列的值
-	public Field getCell(Integer rowIndex, Integer columnIndex) {
+	public FieldData getCell(Integer rowIndex, Integer columnIndex) {
 		RowData rowData = getRow(rowIndex);
-		Field field = rowData.getField(columnIndex);
+		FieldData field = rowData.getField(columnIndex);
 		return field;
 	}
 
