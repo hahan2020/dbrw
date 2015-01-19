@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * @author 345480567@qq.com
  * 
  */
-public class TableData implements Serializable{
+public class TableData implements Serializable, Iterable<RowData> {
 	
 	private static final long serialVersionUID = 4724585893654754202L;
 	
@@ -46,7 +47,7 @@ public class TableData implements Serializable{
 		FieldMeta fieldMeta = tableMeta.getFieldMeta(columnIndex);
 		List<FieldData> fieldList = new ArrayList<FieldData>();
 		for(RowData rowData : rowDataList) {
-			FieldData field = rowData.getField(columnIndex);
+			FieldData field = rowData.getFieldData(columnIndex);
 			fieldList.add(field);
 		}
 		ColumnData columnData = new ColumnData(fieldMeta, fieldList);
@@ -61,7 +62,7 @@ public class TableData implements Serializable{
 	//取得某行、某列的值
 	public FieldData getCell(Integer rowIndex, Integer columnIndex) {
 		RowData rowData = getRow(rowIndex);
-		FieldData field = rowData.getField(columnIndex);
+		FieldData field = rowData.getFieldData(columnIndex);
 		return field;
 	}
 
@@ -80,6 +81,10 @@ public class TableData implements Serializable{
 		}
 		tableData.rowDataList = list;
 		return tableData;
+	}
+	
+	public Iterator<RowData> iterator() {
+		return rowDataList.iterator();
 	}
 	
 	//TODO:添加实现

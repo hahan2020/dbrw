@@ -31,7 +31,13 @@ public class RowData implements Serializable {
 		return tableMeta.getColumnSize();
 	}
 
-	public FieldData getField(Integer columnIndex) {
+	public FieldData getFieldData(Integer columnIndex) {
+		FieldData field = fieldList.get(columnIndex);
+		return field;
+	}
+
+	public FieldData getFieldData(String labelName) {
+		Integer columnIndex = tableMeta.getColumnIndexWithName(labelName);
 		FieldData field = fieldList.get(columnIndex);
 		return field;
 	}
